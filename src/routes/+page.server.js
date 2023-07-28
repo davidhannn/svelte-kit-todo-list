@@ -15,6 +15,7 @@ export function load({ cookies }) {
 
 export const actions = {
   create: async ({ cookies, request }) => {
+    await new Promise((fulfil) => setTimeout(fulfil, 1000));
     const data = await request.formData();
     try {
       db.createTodo(cookies.get("userid"), data.get("description"));
@@ -27,6 +28,7 @@ export const actions = {
   },
 
   delete: async ({ cookies, request }) => {
+    await new Promise((fulfil) => setTimeout(fulfil, 1000));
     const data = await request.formData();
     db.deleteTodo(cookies.get("userid"), data.get("id"));
   },
